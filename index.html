@@ -8,688 +8,3001 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+/* =========================================
+   ROOT COLORS
+========================================= */
+
+:root{
+    --bg:#08080E;
+    --dark:#0C0C13;
+    --card:#111118;
+
+    --green:#5EE6A8;
+    --blue:#63D9FF;
+
+    --white:#FFFFFF;
+    --text:#B8B8C2;
+    --muted:#858590;
+
+    --border:rgba(255,255,255,.08);
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:80px;
+}
+
 body{
-    font-family:"Noto Sans Malayalam",sans-serif;
-    background:#07090d;
-    color:#f5f7fa;
+    font-family:"Noto Sans Malayalam","Montserrat",sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    overflow-x:hidden;
 }
-a{text-decoration:none;color:inherit}
-img{width:100%;display:block}
-.container{width:92%;max-width:1180px;margin:auto}
 
-/* THEME COLORS
-   Main dark: #07090d
-   Light Green: #8ee6b5
-   Light Blue: #9edcff
-*/
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-/* TOP BAR */
+img{
+    width:100%;
+    display:block;
+}
+
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
 .topbar{
-    background:#080b12;
-    color:#b9c9d5;
-    font-size:12px;
+    background:#07070C;
+    border-bottom:1px solid var(--border);
+    color:#A8A8B2;
+
+    font-family:"Montserrat",sans-serif;
+    font-size:10px;
+
     padding:9px 0;
-    border-bottom:1px solid rgba(158,220,255,.12);
 }
+
 .topbar .container{
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-/* HEADER */
+
+/* =========================================
+   HEADER
+========================================= */
+
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(7,9,13,.92);
+
+    background:rgba(8,8,14,.90);
+
     backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(158,220,255,.12);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
 }
+
 .navbar{
     min-height:76px;
+
     display:flex;
+    align-items:center;
     justify-content:space-between;
-    align-items:center;
-}
-.brand{display:flex;align-items:center;gap:12px}
-.brand-logo{
-    width:52px;height:52px;border-radius:50%;
-    object-fit:cover;
-    border:2px solid #8ee6b5;
-    background:#101821;
-}
-.brand h1{
-    font-size:18px;line-height:1.1;
-    color:#f8fbff;font-weight:800;
-}
-.brand span{font-size:10px;color:#91a1ad}
-
-nav ul{display:flex;gap:24px;list-style:none}
-nav a{
-    font-size:13px;font-weight:600;
-    color:#c4cdd5;transition:.3s;
-}
-nav a:hover{color:#9edcff}
-.menu{
-    display:none;border:0;background:#12251e;color:#fff;
-    width:42px;height:42px;border-radius:10px;font-size:20px;
 }
 
-/* HERO */
-.hero{
-    min-height:650px;
+
+/* BRAND */
+
+.brand{
     display:flex;
     align-items:center;
+    gap:12px;
+}
+
+.brand-logo{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid var(--green);
+
+    box-shadow:
+        0 0 18px rgba(94,230,168,.20);
+}
+
+.brand h1{
+    font-family:"Montserrat",sans-serif;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    letter-spacing:.8px;
+
+    line-height:1.1;
+
+    color:var(--white);
+}
+
+.brand h1 span{
+    color:var(--green);
+}
+
+.brand small{
+    display:block;
+
+    margin-top:4px;
+
+    color:#777783;
+
+    font-size:9px;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+nav ul{
+    display:flex;
+
+    list-style:none;
+
+    gap:27px;
+}
+
+nav a{
     position:relative;
-    overflow:hidden;
-    background:
-    linear-gradient(110deg,rgba(4,7,11,.94),rgba(11,30,26,.62)),
-    url("hero.jpg") center/cover;
-}
-.hero:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top,#07090d 0%,transparent 38%,rgba(7,9,13,.15) 100%);
-}
-.hero:before{
-    content:"";
-    position:absolute;
-    width:500px;height:500px;border-radius:50%;
-    right:-180px;top:-150px;
-    background:rgba(142,230,181,.06);
-}
-.hero-content{position:relative;z-index:2;max-width:760px;color:white}
-.tag{
-    display:inline-block;
-    border:1px solid rgba(158,220,255,.3);
-    background:rgba(158,220,255,.07);
-    color:#9edcff;
-    padding:7px 15px;border-radius:30px;
-    font-size:12px;margin-bottom:20px;
-}
-.hero h2{
-    font-size:clamp(38px,6vw,70px);
-    line-height:1.12;font-weight:800;margin-bottom:20px;
-}
-.hero h2 span{color:#8ee6b5}
-.hero p{max-width:650px;color:#d2dbe1;font-size:16px}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.btn{
-    padding:12px 22px;border-radius:10px;font-size:13px;
-    font-weight:700;display:inline-block;transition:.3s;
-}
-.btn:hover{transform:translateY(-3px)}
-.btn-green{background:#8ee6b5;color:#07110c}
-.btn-blue{border:1px solid rgba(158,220,255,.55);color:#9edcff}
 
-/* SECTIONS */
-section{padding:80px 0}
-.section-head{text-align:center;margin-bottom:42px}
-.section-head small{
-    color:#9edcff;font-weight:800;font-size:11px;letter-spacing:2px;
-}
-.section-head h2{color:#f7fafc;font-size:32px;margin:5px 0}
-.section-head p{color:#8997a2;font-size:13px;max-width:650px;margin:auto}
+    font-family:"Montserrat",sans-serif;
 
-/* ABOUT */
-.about-grid{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:45px;align-items:center;
-}
-.about-photo{
-    height:420px;border-radius:22px;overflow:hidden;
-    box-shadow:0 18px 45px rgba(0,0,0,.35);
-    border:1px solid rgba(158,220,255,.1);
-}
-.about-photo img{height:100%;object-fit:cover}
-.about h3{font-size:28px;color:#8ee6b5;margin-bottom:15px}
-.about p{color:#9aa8b2;font-size:14px;margin-bottom:14px}
-.points{display:grid;gap:10px;margin-top:20px}
-.point{
-    padding:13px 15px;background:#0d1218;border-radius:11px;
-    border:1px solid rgba(158,220,255,.08);
-    box-shadow:0 4px 18px rgba(0,0,0,.18);
-    font-size:13px;
-}
+    font-size:11px;
 
-/* STATS */
-.stats{
-    background:linear-gradient(100deg,#0b1714,#0b1720);
-    border-top:1px solid rgba(142,230,181,.12);
-    border-bottom:1px solid rgba(158,220,255,.12);
-}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{text-align:center;padding:18px}
-.stat-icon{font-size:28px}
-.stat strong{display:block;font-size:35px;margin:3px 0;color:#f8fbff}
-.stat span{color:#9edcff;font-size:12px}
+    font-weight:600;
 
-/* COMMITTEE */
-.committee{
-    background:#07090d;
-}
-.committee-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-.member{
-    background:linear-gradient(145deg,#0d1218,#0a0f14);
-    border:1px solid rgba(158,220,255,.09);
-    border-radius:18px;overflow:hidden;
-    box-shadow:0 8px 28px rgba(0,0,0,.25);
-    transition:.35s;
-}
-.member:hover{
-    transform:translateY(-7px);
-    border-color:rgba(142,230,181,.4);
-}
-.member-photo{
-    height:210px;
-    background:linear-gradient(135deg,#10231c,#101b25);
-    display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;
-}
-.member-photo img{
-    width:100%;height:100%;object-fit:cover;
-}
-.member-photo.no-photo:before{
-    content:"SKSSF";
-    font-size:30px;font-weight:800;
-    letter-spacing:2px;color:rgba(158,220,255,.3);
-}
-.member-info{padding:16px;text-align:center}
-.member-info h3{color:#f4f7f9;font-size:15px;line-height:1.45}
-.member-info p{color:#8ee6b5;font-size:11px;font-weight:700;margin-top:5px}
+    color:#BEBEC7;
 
-/* ROLE HEADINGS */
-.role-title{
-    margin:48px 0 20px;
-    display:flex;align-items:center;gap:12px;
-}
-.role-title:first-child{margin-top:0}
-.role-title span{
-    width:8px;height:30px;border-radius:5px;
-    background:linear-gradient(#8ee6b5,#9edcff);
-}
-.role-title h3{font-size:22px;color:#f5f8fa}
-
-/* PROGRAMS */
-.programs{
-    background:#0a0f14;
-    border-top:1px solid rgba(158,220,255,.08);
-    border-bottom:1px solid rgba(158,220,255,.08);
-}
-.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.program{
-    background:#0e141b;padding:25px;border-radius:17px;
-    border:1px solid rgba(158,220,255,.08);
-    box-shadow:0 7px 25px rgba(0,0,0,.2);
     transition:.3s;
 }
-.program:hover{transform:translateY(-5px);border-color:rgba(142,230,181,.3)}
-.program-icon{
-    width:48px;height:48px;display:flex;align-items:center;
-    justify-content:center;background:rgba(142,230,181,.1);
-    border:1px solid rgba(142,230,181,.15);
-    border-radius:12px;font-size:23px;margin-bottom:15px;
-}
-.program h3{color:#f1f5f7;font-size:17px;margin-bottom:7px}
-.program p{color:#8997a2;font-size:13px}
 
-/* GALLERY */
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.gallery-item{
-    height:220px;overflow:hidden;border-radius:15px;cursor:pointer;
-    border:1px solid rgba(158,220,255,.08);
+nav a:hover{
+    color:var(--green);
 }
-.gallery-item img{height:100%;object-fit:cover;transition:.4s}
-.gallery-item:hover img{transform:scale(1.08)}
 
-/* NEWS */
-.news{background:#0a0f14}
-.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.news-card{
-    background:#0e141b;border-radius:17px;padding:22px;
-    border:1px solid rgba(158,220,255,.08);
-    box-shadow:0 6px 25px rgba(0,0,0,.2);
-}
-.news-date{color:#9edcff;font-size:11px;font-weight:800}
-.news-card h3{color:#f2f6f8;margin:7px 0;font-size:17px}
-.news-card p{color:#8997a2;font-size:13px}
+nav a::after{
+    content:"";
 
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.contact-card{
-    background:#0d1218;padding:28px;border-radius:18px;
-    border:1px solid rgba(158,220,255,.08);
-    box-shadow:0 7px 25px rgba(0,0,0,.22);
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        var(--green),
+        var(--blue)
+    );
+
+    transition:.3s;
 }
-.contact-row{display:flex;gap:14px;margin-bottom:22px}
-.contact-icon{
-    width:45px;height:45px;min-width:45px;display:flex;
-    justify-content:center;align-items:center;
-    background:rgba(142,230,181,.1);
-    border:1px solid rgba(142,230,181,.13);
+
+nav a:hover::after{
+    width:100%;
+}
+
+
+/* MOBILE MENU */
+
+.menu{
+    display:none;
+
+    width:43px;
+    height:43px;
+
+    border:1px solid rgba(94,230,168,.30);
+
+    border-radius:10px;
+
+    background:#111118;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+    min-height:690px;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5,5,9,.15),
+            rgba(8,8,14,.98)
+        ),
+        linear-gradient(
+            90deg,
+            rgba(8,8,14,.90),
+            rgba(8,8,14,.28)
+        ),
+        url("hero.jpg") center/cover no-repeat;
+}
+
+
+/* GREEN GLOW */
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:480px;
+    height:480px;
+
+    right:-180px;
+    top:-160px;
+
+    background:var(--green);
+
+    opacity:.07;
+
+    filter:blur(110px);
+
+    border-radius:50%;
+}
+
+
+/* BLUE GLOW */
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    left:-180px;
+    bottom:-180px;
+
+    background:var(--blue);
+
+    opacity:.06;
+
+    filter:blur(110px);
+
+    border-radius:50%;
+}
+
+
+/* HERO CONTENT */
+
+.hero-content{
+    position:relative;
+
+    z-index:2;
+
+    max-width:780px;
+
+    padding-top:45px;
+}
+
+
+/* TAG */
+
+.tag{
+    display:inline-block;
+
+    color:var(--blue);
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    letter-spacing:4px;
+
+    margin-bottom:22px;
+}
+
+
+/* HERO TITLE */
+
+.hero h2{
+    font-family:"Montserrat",sans-serif;
+
+    font-size:clamp(40px,7vw,78px);
+
+    line-height:1.02;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+    margin-bottom:23px;
+}
+
+.hero h2 span{
+    background:linear-gradient(
+        90deg,
+        var(--green),
+        var(--blue)
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 35px rgba(94,230,168,.10);
+}
+
+
+/* HERO DESCRIPTION */
+
+.hero p{
+    max-width:630px;
+
+    color:#B5B5BF;
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.buttons{
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:32px;
+}
+
+.btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:13px 23px;
+
+    border-radius:9px;
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* GREEN + BLUE BUTTON */
+
+.btn-pink{
+    background:linear-gradient(
+        135deg,
+        var(--green),
+        var(--blue)
+    );
+
+    color:#06100B;
+
+    box-shadow:
+        0 8px 30px rgba(94,230,168,.15);
+}
+
+.btn-pink:hover{
+    box-shadow:
+        0 10px 35px rgba(99,217,255,.20);
+}
+
+
+/* OUTLINE BUTTON */
+
+.btn-border{
+    border:1px solid rgba(255,255,255,.25);
+
+    color:white;
+
+    background:rgba(255,255,255,.03);
+}
+
+.btn-border:hover{
+    border-color:var(--blue);
+
+    color:var(--blue);
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+section{
+    padding:90px 0;
+
+    position:relative;
+}
+
+.section-head{
+    margin-bottom:45px;
+}
+
+.section-head.center{
+    text-align:center;
+}
+
+.section-head small{
+    display:block;
+
+    color:var(--blue);
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.section-head h2{
+    color:white;
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:clamp(30px,5vw,48px);
+
+    line-height:1.15;
+
+    font-weight:800;
+
+    margin-bottom:11px;
+}
+
+.section-head p{
+    max-width:650px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.section-head.center p{
+    margin:auto;
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about-section{
+    background:var(--bg);
+}
+
+.about-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:55px;
+
+    align-items:center;
+}
+
+
+/* IMAGE */
+
+.about-photo{
+    height:430px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    position:relative;
+
+    background:#111118;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.50);
+}
+
+.about-photo::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(8,8,14,.60)
+        );
+}
+
+.about-photo img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.about-photo:hover img{
+    transform:scale(1.05);
+}
+
+
+/* ABOUT CONTENT */
+
+.about-content h3{
+    font-size:28px;
+
+    color:white;
+
+    margin-bottom:17px;
+}
+
+.about-content h3::first-letter{
+    color:var(--green);
+}
+
+.about-content p{
+    color:#92929D;
+
+    font-size:13px;
+
+    line-height:1.9;
+
+    margin-bottom:15px;
+}
+
+
+/* POINTS */
+
+.points{
+    display:grid;
+
+    gap:10px;
+
+    margin-top:23px;
+}
+
+.point{
+    padding:14px 16px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
     border-radius:11px;
-}
-.contact-row h4{color:#f2f6f8;font-size:14px}
-.contact-row p{color:#8d9aa4;font-size:12px}
 
-/* FOOTER */
+    color:#D0D0D7;
+
+    font-size:12px;
+
+    transition:.3s;
+}
+
+.point:hover{
+    border-color:rgba(94,230,168,.40);
+
+    transform:translateX(5px);
+
+    color:white;
+
+    box-shadow:
+        0 0 20px rgba(94,230,168,.05);
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats{
+    background:
+        linear-gradient(
+            135deg,
+            #0D1713,
+            #08080E 55%,
+            #0A1116
+        );
+
+    border-top:1px solid var(--border);
+
+    border-bottom:1px solid var(--border);
+}
+
+.stats-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+}
+
+.stat{
+    text-align:center;
+
+    padding:28px 15px;
+
+    border-right:1px solid var(--border);
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat-icon{
+    font-size:25px;
+
+    margin-bottom:5px;
+}
+
+.stat strong{
+    display:block;
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:34px;
+
+    color:white;
+
+    margin:3px 0;
+}
+
+.stat span{
+    color:#858590;
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:9px;
+}
+
+
+/* =========================================
+   COMMITTEE
+========================================= */
+
+.committee-section{
+    background:var(--bg);
+}
+
+.committee-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+}
+
+.member{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:17px;
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.member:hover{
+    transform:translateY(-8px);
+
+    border-color:rgba(99,217,255,.45);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+}
+
+
+/* MEMBER PHOTO */
+
+.member-photo{
+    height:270px;
+
+    background:#16161F;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.member-photo::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            rgba(8,8,14,.55)
+        );
+}
+
+.member-photo img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+}
+
+.member:hover .member-photo img{
+    transform:scale(1.05);
+}
+
+
+/* MEMBER INFO */
+
+.member-info{
+    padding:18px;
+
+    text-align:center;
+}
+
+.member-info h3{
+    color:white;
+
+    font-size:15px;
+
+    margin-bottom:5px;
+}
+
+.member-info p{
+    color:var(--green);
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================
+   PROGRAMS
+========================================= */
+
+.programs{
+    background:#0C0C13;
+
+    border-top:1px solid var(--border);
+
+    border-bottom:1px solid var(--border);
+}
+
+.program-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+}
+
+.program{
+    background:var(--card);
+
+    padding:27px;
+
+    border:1px solid var(--border);
+
+    border-radius:17px;
+
+    transition:.35s;
+}
+
+.program:hover{
+    transform:translateY(-6px);
+
+    border-color:rgba(94,230,168,.40);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.30);
+}
+
+
+/* PROGRAM ICON */
+
+.program-icon{
+    width:50px;
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(94,230,168,.10),
+            rgba(99,217,255,.10)
+        );
+
+    border:1px solid rgba(94,230,168,.18);
+
+    border-radius:13px;
+
+    font-size:22px;
+
+    margin-bottom:17px;
+}
+
+.program h3{
+    color:white;
+
+    font-size:16px;
+
+    margin-bottom:8px;
+}
+
+.program p{
+    color:#858590;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+.gallery-section{
+    background:var(--bg);
+}
+
+.gallery-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:12px;
+}
+
+.gallery-item{
+    height:230px;
+
+    overflow:hidden;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+}
+
+.gallery-item::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            rgba(94,230,168,.12)
+        );
+
+    opacity:0;
+
+    transition:.3s;
+}
+
+.gallery-item:hover::after{
+    opacity:1;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+
+/* =========================================
+   NEWS
+========================================= */
+
+.news{
+    background:#0C0C13;
+
+    border-top:1px solid var(--border);
+}
+
+.news-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+}
+
+.news-card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:17px;
+
+    padding:24px;
+
+    transition:.35s;
+}
+
+.news-card:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(99,217,255,.35);
+}
+
+.news-date{
+    color:var(--blue);
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+}
+
+.news-card h3{
+    color:white;
+
+    margin:9px 0;
+
+    font-size:17px;
+}
+
+.news-card p{
+    color:#858590;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact-section{
+    background:var(--bg);
+}
+
+.contact-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
+
+.contact-card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    padding:30px;
+
+    border-radius:18px;
+}
+
+.contact-row{
+    display:flex;
+
+    gap:14px;
+
+    margin-bottom:24px;
+}
+
+.contact-row:last-child{
+    margin-bottom:0;
+}
+
+.contact-icon{
+    width:45px;
+    height:45px;
+
+    min-width:45px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(94,230,168,.09),
+            rgba(99,217,255,.09)
+        );
+
+    border:1px solid rgba(99,217,255,.15);
+
+    border-radius:11px;
+
+    font-size:18px;
+}
+
+.contact-row h4{
+    color:white;
+
+    font-size:13px;
+
+    margin-bottom:3px;
+}
+
+.contact-row p{
+    color:#858590;
+
+    font-size:11px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
 footer{
-    background:#05070a;color:white;padding:50px 0 20px;
-    border-top:1px solid rgba(158,220,255,.1);
+    background:#050509;
+
+    color:white;
+
+    padding:55px 0 22px;
+
+    border-top:1px solid var(--border);
 }
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
-footer h3{font-size:17px;margin-bottom:12px}
-footer p,footer li{color:#8997a2;font-size:12px}
-footer ul{list-style:none;display:grid;gap:8px}
-footer a:hover{color:#9edcff}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:40px;
+}
+
+footer h3{
+    font-family:"Montserrat",sans-serif;
+
+    font-size:15px;
+
+    margin-bottom:14px;
+}
+
+footer p,
+footer li{
+    color:#777782;
+
+    font-size:11px;
+
+    line-height:1.8;
+}
+
+footer ul{
+    list-style:none;
+
+    display:grid;
+
+    gap:7px;
+}
+
+footer a:hover{
+    color:var(--green);
+}
+
 .copyright{
-    border-top:1px solid rgba(255,255,255,.08);
-    margin-top:35px;padding-top:18px;text-align:center;
-    color:#697780;font-size:11px;
+    border-top:1px solid var(--border);
+
+    margin-top:40px;
+
+    padding-top:19px;
+
+    text-align:center;
+
+    color:#666671;
+
+    font-family:"Montserrat",sans-serif;
+
+    font-size:9px;
 }
 
-/* WHATSAPP */
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
 .whatsapp{
-    position:fixed;right:18px;bottom:18px;width:57px;height:57px;
-    border-radius:50%;background:#8ee6b5;color:#07110c;
-    display:flex;justify-content:center;align-items:center;
-    font-size:27px;box-shadow:0 8px 25px rgba(0,0,0,.4);z-index:2000;
+    position:fixed;
+
+    right:18px;
+    bottom:18px;
+
+    width:57px;
+    height:57px;
+
+    border-radius:50%;
+
+    background:#16C76B;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.50);
+
+    z-index:2000;
+
+    transition:.3s;
 }
 
-/* TOP */
+.whatsapp:hover{
+    transform:scale(1.08);
+}
+
+
+/* =========================================
+   TOP BUTTON
+========================================= */
+
 #topBtn{
-    position:fixed;right:22px;bottom:88px;width:40px;height:40px;
-    border:1px solid rgba(158,220,255,.2);border-radius:10px;
-    background:#101820;color:#9edcff;cursor:pointer;display:none;z-index:1500;
+    position:fixed;
+
+    right:22px;
+    bottom:88px;
+
+    width:40px;
+    height:40px;
+
+    border:1px solid rgba(94,230,168,.25);
+
+    border-radius:10px;
+
+    background:#111118;
+
+    color:var(--green);
+
+    cursor:pointer;
+
+    display:none;
+
+    z-index:1500;
+
+    font-size:18px;
 }
 
-/* MOBILE */
+
+/* =========================================
+   LIGHTBOX
+========================================= */
+
+.lightbox{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.96);
+
+    z-index:5000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    cursor:pointer;
+}
+
+.lightbox img{
+    max-width:95%;
+    max-height:90vh;
+
+    width:auto;
+
+    border-radius:12px;
+
+    box-shadow:
+        0 0 60px rgba(99,217,255,.12);
+}
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.active{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media(max-width:900px){
+
     nav ul{
-        position:absolute;top:76px;left:0;right:0;
-        background:#080b10;flex-direction:column;padding:20px;
-        display:none;box-shadow:0 12px 25px rgba(0,0,0,.35);
-        border-bottom:1px solid rgba(158,220,255,.1);
+        position:absolute;
+
+        top:76px;
+
+        left:0;
+        right:0;
+
+        background:#0C0C13;
+
+        flex-direction:column;
+
+        padding:15px 20px;
+
+        display:none;
+
+        gap:0;
+
+        border-bottom:1px solid var(--border);
+
+        box-shadow:
+            0 15px 30px rgba(0,0,0,.45);
     }
-    nav ul.show{display:flex}
-    .menu{display:block}
-    .about-grid{grid-template-columns:1fr}
-    .committee-grid{grid-template-columns:repeat(2,1fr)}
-    .program-grid,.news-grid{grid-template-columns:1fr 1fr}
-    .gallery-grid{grid-template-columns:repeat(2,1fr)}
-    .stats-grid{grid-template-columns:repeat(2,1fr)}
-    .contact-grid{grid-template-columns:1fr}
-    .footer-grid{grid-template-columns:1fr 1fr}
+
+    nav ul.show{
+        display:flex;
+    }
+
+    nav li{
+        border-bottom:1px solid rgba(255,255,255,.05);
+    }
+
+    nav li:last-child{
+        border-bottom:0;
+    }
+
+    nav a{
+        display:block;
+
+        padding:14px 5px;
+    }
+
+    nav a::after{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .committee-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .program-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .news-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat{
+        border-bottom:1px solid var(--border);
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
 }
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
 @media(max-width:600px){
-    section{padding:60px 0}
-    .hero{min-height:590px}
-    .hero h2{font-size:39px}
-    .hero p{font-size:14px}
-    .about-photo{height:280px}
-    .committee-grid{grid-template-columns:1fr 1fr}
-    .member-photo{height:180px}
-    .program-grid,.news-grid{grid-template-columns:1fr}
-    .gallery-item{height:165px}
-    .footer-grid{grid-template-columns:1fr}
-    .brand h1{font-size:15px}
-    .brand-logo{width:46px;height:46px}
-    .navbar{min-height:70px}
-    nav ul{top:70px}
+
+    .container{
+        width:90%;
+    }
+
+    .topbar{
+        font-size:8px;
+    }
+
+    .navbar{
+        min-height:70px;
+    }
+
+    .brand-logo{
+        width:43px;
+        height:43px;
+    }
+
+    .brand h1{
+        font-size:14px;
+
+        letter-spacing:.5px;
+    }
+
+    .brand small{
+        font-size:8px;
+    }
+
+    nav ul{
+        top:70px;
+    }
+
+    section{
+        padding:65px 0;
+    }
+
+    .hero{
+        min-height:620px;
+    }
+
+    .hero-content{
+        padding-top:40px;
+    }
+
+    .tag{
+        font-size:8px;
+
+        letter-spacing:3px;
+    }
+
+    .hero h2{
+        font-size:42px;
+
+        letter-spacing:-1.5px;
+    }
+
+    .hero p{
+        font-size:13px;
+
+        line-height:1.8;
+    }
+
+    .about-photo{
+        height:280px;
+    }
+
+    .about-content h3{
+        font-size:25px;
+    }
+
+    .committee-grid{
+        grid-template-columns:1fr 1fr;
+
+        gap:12px;
+    }
+
+    .member-photo{
+        height:190px;
+    }
+
+    .member-info{
+        padding:14px 8px;
+    }
+
+    .member-info h3{
+        font-size:13px;
+    }
+
+    .program-grid{
+        grid-template-columns:1fr;
+    }
+
+    .news-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+
+        gap:9px;
+    }
+
+    .gallery-item{
+        height:165px;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+
+        gap:30px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat strong{
+        font-size:29px;
+    }
 }
+
+
+/* =========================================
+   EXTRA SMALL
+========================================= */
+
+@media(max-width:380px){
+
+    .hero h2{
+        font-size:36px;
+    }
+
+    .brand h1{
+        font-size:12px;
+    }
+
+    .member-photo{
+        height:165px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================================
+     TOP BAR
+========================================= -->
+
 <div class="topbar">
+
     <div class="container">
-        <span>SKSSF THALAYAD UNIT</span>
-        <span>2026 – 27</span>
+
+        <span>
+            SKSSF THALAYAD UNIT
+        </span>
+
+        <span>
+            2026 – 27
+        </span>
+
     </div>
+
 </div>
+
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header>
+
 <div class="navbar container">
+
+
 <a href="#home" class="brand">
-    <img src="logo.jpg" class="brand-logo" alt="SKSSF Thalayad Unit Logo">
+
+    <img
+        src="logo.jpg"
+        class="brand-logo"
+        alt="SKSSF Thalayad Unit Logo"
+    >
+
     <div>
-        <h1>SKSSF THALAYAD UNIT</h1>
-        <span>Official Unit Website</span>
+
+        <h1>
+            SKSSF <span>THALAYAD</span>
+        </h1>
+
+        <small>
+            Official Unit Website
+        </small>
+
     </div>
+
 </a>
 
+
+
 <nav>
-<button class="menu" id="menuBtn">☰</button>
+
+<button
+    class="menu"
+    id="menuBtn"
+    aria-label="Open Menu"
+    aria-expanded="false"
+>
+    ☰
+</button>
+
+
 <ul id="nav">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#committee">Committee</a></li>
-    <li><a href="#programs">Activities</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
+
+    <li>
+        <a href="#home">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a href="#about">
+            About
+        </a>
+    </li>
+
+    <li>
+        <a href="#committee">
+            Committee
+        </a>
+    </li>
+
+    <li>
+        <a href="#programs">
+            Activities
+        </a>
+    </li>
+
+    <li>
+        <a href="#gallery">
+            Gallery
+        </a>
+    </li>
+
+    <li>
+        <a href="#contact">
+            Contact
+        </a>
+    </li>
+
 </ul>
+
 </nav>
+
 </div>
+
 </header>
 
-<section class="hero" id="home">
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section
+    class="hero"
+    id="home"
+>
+
 <div class="container">
-<div class="hero-content">
-    <span class="tag">SKSSF THALAYAD UNIT • 2026–27</span>
-    <h2>Welcome to<br><span>SKSSF Thalayad Unit</span></h2>
+
+<div class="hero-content reveal">
+
+    <span class="tag">
+        SKSSF THALAYAD UNIT • 2026–27
+    </span>
+
+
+    <h2>
+
+        Welcome to<br>
+
+        <span>
+            SKSSF Thalayad Unit
+        </span>
+
+    </h2>
+
+
     <p>
+
         വിദ്യാഭ്യാസം, സംസ്കാരം, സേവനം,
         സാമൂഹിക പ്രവർത്തനം എന്നിവയിലൂടെ
         സമൂഹത്തിനൊപ്പം മുന്നേറുന്ന ഒരു കൂട്ടായ്മ.
+
     </p>
+
+
     <div class="buttons">
-        <a href="#about" class="btn btn-green">ഞങ്ങളെ അറിയാം →</a>
-        <a href="#contact" class="btn btn-blue">ബന്ധപ്പെടുക</a>
+
+        <a
+            href="#about"
+            class="btn btn-pink"
+        >
+            ഞങ്ങളെ അറിയാം →
+        </a>
+
+
+        <a
+            href="#contact"
+            class="btn btn-border"
+        >
+            ബന്ധപ്പെടുക
+        </a>
+
     </div>
+
 </div>
+
 </div>
+
 </section>
 
-<section id="about">
+
+
+<!-- =========================================
+     ABOUT
+========================================= -->
+
+<section
+    id="about"
+    class="about-section"
+>
+
 <div class="container">
+
+
 <div class="section-head">
-    <small>ABOUT US</small>
-    <h2>SKSSF Thalayad Unit</h2>
-    <p>നമ്മുടെ യൂണിറ്റിന്റെ പ്രവർത്തനങ്ങളും പരിപാടികളും ഒരിടത്ത്.</p>
+
+    <small>
+        ABOUT US
+    </small>
+
+    <h2>
+        SKSSF Thalayad Unit
+    </h2>
+
+    <p>
+        നമ്മുടെ യൂണിറ്റിന്റെ പ്രവർത്തനങ്ങളും
+        പരിപാടികളും ഒരിടത്ത്.
+    </p>
+
 </div>
+
+
 
 <div class="about-grid">
-<div class="about-photo">
-    <img src="about.jpg" alt="SKSSF Thalayad Unit">
+
+
+<div class="about-photo reveal">
+
+    <img
+        src="about.jpg"
+        alt="SKSSF Thalayad Unit"
+        loading="lazy"
+    >
+
 </div>
-<div class="about">
-    <h3>നന്മയുടെ വഴിയിൽ ഒരുമിച്ച്</h3>
-    <p>SKSSF Thalayad Unit വിദ്യാഭ്യാസ, സാമൂഹിക, സാംസ്കാരിക മേഖലകളിൽ വിവിധ പ്രവർത്തനങ്ങൾ നടത്തിവരുന്നു.</p>
-    <p>വിദ്യാർത്ഥികളെയും യുവജനങ്ങളെയും സമൂഹത്തെയും ഒരുമിച്ച് ചേർത്ത് നന്മയുടെ പ്രവർത്തനങ്ങൾ മുന്നോട്ട് കൊണ്ടുപോകുകയാണ് ലക്ഷ്യം.</p>
+
+
+
+<div class="about-content reveal">
+
+    <h3>
+        നന്മയുടെ വഴിയിൽ ഒരുമിച്ച്
+    </h3>
+
+
+    <p>
+
+        SKSSF Thalayad Unit വിദ്യാഭ്യാസ,
+        സാമൂഹിക, സാംസ്കാരിക മേഖലകളിൽ
+        വിവിധ പ്രവർത്തനങ്ങൾ നടത്തിവരുന്നു.
+
+    </p>
+
+
+    <p>
+
+        വിദ്യാർത്ഥികളെയും യുവജനങ്ങളെയും
+        സമൂഹത്തെയും ഒരുമിച്ച് ചേർത്ത്
+        നന്മയുടെ പ്രവർത്തനങ്ങൾ മുന്നോട്ട്
+        കൊണ്ടുപോകുകയാണ് ലക്ഷ്യം.
+
+    </p>
+
+
+
     <div class="points">
-        <div class="point">🎓 വിദ്യാഭ്യാസ പ്രവർത്തനങ്ങൾ</div>
-        <div class="point">🤝 സാമൂഹിക സേവനം</div>
-        <div class="point">📚 മത-സാംസ്കാരിക പ്രവർത്തനങ്ങൾ</div>
-        <div class="point">🌱 യുവജന ശാക്തീകരണം</div>
+
+
+        <div class="point">
+            🎓 വിദ്യാഭ്യാസ പ്രവർത്തനങ്ങൾ
+        </div>
+
+
+        <div class="point">
+            🤝 സാമൂഹിക സേവനം
+        </div>
+
+
+        <div class="point">
+            📚 മത-സാംസ്കാരിക പ്രവർത്തനങ്ങൾ
+        </div>
+
+
+        <div class="point">
+            🌱 യുവജന ശാക്തീകരണം
+        </div>
+
+
     </div>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
+
+
+<!-- =========================================
+     STATS
+========================================= -->
 
 <section class="stats">
+
 <div class="container">
+
 <div class="stats-grid">
-<div class="stat"><div class="stat-icon">👥</div><strong>50+</strong><span>Members</span></div>
-<div class="stat"><div class="stat-icon">📅</div><strong>20+</strong><span>Programs</span></div>
-<div class="stat"><div class="stat-icon">🎓</div><strong>10+</strong><span>Educational Activities</span></div>
-<div class="stat"><div class="stat-icon">🤝</div><strong>100+</strong><span>Service Activities</span></div>
+
+
+<div class="stat reveal">
+
+    <div class="stat-icon">
+        👥
+    </div>
+
+    <strong>
+        50+
+    </strong>
+
+    <span>
+        Members
+    </span>
+
 </div>
+
+
+
+<div class="stat reveal">
+
+    <div class="stat-icon">
+        📅
+    </div>
+
+    <strong>
+        20+
+    </strong>
+
+    <span>
+        Programs
+    </span>
+
 </div>
+
+
+
+<div class="stat reveal">
+
+    <div class="stat-icon">
+        🎓
+    </div>
+
+    <strong>
+        10+
+    </strong>
+
+    <span>
+        Educational Activities
+    </span>
+
+</div>
+
+
+
+<div class="stat reveal">
+
+    <div class="stat-icon">
+        🤝
+    </div>
+
+    <strong>
+        100+
+    </strong>
+
+    <span>
+        Service Activities
+    </span>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
 
-<!-- EXECUTIVE COMMITTEE -->
-<section id="committee" class="committee">
+
+
+<!-- =========================================
+     COMMITTEE
+========================================= -->
+
+<section
+    id="committee"
+    class="committee-section"
+>
+
 <div class="container">
 
-<div class="section-head">
-    <small>LEADERSHIP</small>
-    <h2>Unit Executive Committee</h2>
-    <p>SKSSF Thalayad Unit 2026–27</p>
+
+<div class="section-head center">
+
+    <small>
+        LEADERSHIP
+    </small>
+
+    <h2>
+        Executive Committee
+    </h2>
+
+    <p>
+        SKSSF Thalayad Unit 2026–27
+    </p>
+
 </div>
 
-<div class="role-title"><span></span><h3>Executive Committee</h3></div>
+
+
 <div class="committee-grid">
 
-<div class="member"><div class="member-photo"><img src="president.jpg" alt="Abdu Rafeeh"></div><div class="member-info"><h3>Abdu Rafeeh</h3><p>President</p></div></div>
 
-<div class="member"><div class="member-photo"><img src="secretary.jpg" alt="Riyas KK"></div><div class="member-info"><h3>Riyas KK</h3><p>G. Secretary</p></div></div>
+<!-- PRESIDENT -->
 
-<div class="member"><div class="member-photo"><img src="secretary2.jpg" alt="Shadil"></div><div class="member-info"><h3>Shadil</h3><p>W. Secretary</p></div></div>
+<div class="member reveal">
 
-<div class="member"><div class="member-photo"><img src="treasurer.jpg" alt="Shihabudeen"></div><div class="member-info"><h3>Shihabudeen</h3><p>Treasurer</p></div></div>
+    <div class="member-photo">
 
-</div>
+        <img
+            src="president.jpg"
+            alt="President"
+            loading="lazy"
+        >
 
-<div class="role-title"><span></span><h3>Vice President</h3></div>
-<div class="committee-grid">
+    </div>
 
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Sinan KM</h3><p>Vice President</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Muhammed Thameem</h3><p>Vice President</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Sidan</h3><p>Vice President</p></div></div>
 
-</div>
+    <div class="member-info">
 
-<div class="role-title"><span></span><h3>Joint Secretary</h3></div>
-<div class="committee-grid">
+        <h3>
+            പേര് ഇവിടെ
+        </h3>
 
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Finu Fayas</h3><p>Joint Secretary</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Shamnas</h3><p>Joint Secretary</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Mahroof</h3><p>Joint Secretary</p></div></div>
+        <p>
+            PRESIDENT
+        </p>
 
-</div>
-
-<div class="role-title"><span></span><h3>Members</h3></div>
-<div class="committee-grid">
-
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Ahmed Fasil</h3><p>Member</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Firoz</h3><p>Member</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Safad</h3><p>Member</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Reswin</h3><p>Member</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Hashir</h3><p>Member</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Shahabas</h3><p>Member</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Muhammed Shab</h3><p>Member</p></div></div>
+    </div>
 
 </div>
 
-<div class="role-title"><span></span><h3>Councillers</h3></div>
-<div class="committee-grid">
 
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Hamza Faizy</h3><p>Counciller</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Fazlu Rahman Faizy</h3><p>Counciller</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Rahees Dharimi</h3><p>Counciller</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Fasil</h3><p>Counciller</p></div></div>
-<div class="member"><div class="member-photo no-photo"></div><div class="member-info"><h3>Rabeeh</h3><p>Counciller</p></div></div>
+
+<!-- GENERAL SECRETARY -->
+
+<div class="member reveal">
+
+    <div class="member-photo">
+
+        <img
+            src="secretary.jpg"
+            alt="General Secretary"
+            loading="lazy"
+        >
+
+    </div>
+
+
+    <div class="member-info">
+
+        <h3>
+            പേര് ഇവിടെ
+        </h3>
+
+        <p>
+            GENERAL SECRETARY
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- TREASURER -->
+
+<div class="member reveal">
+
+    <div class="member-photo">
+
+        <img
+            src="treasurer.jpg"
+            alt="Treasurer"
+            loading="lazy"
+        >
+
+    </div>
+
+
+    <div class="member-info">
+
+        <h3>
+            പേര് ഇവിടെ
+        </h3>
+
+        <p>
+            TREASURER
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- SECRETARY -->
+
+<div class="member reveal">
+
+    <div class="member-photo">
+
+        <img
+            src="secretary2.jpg"
+            alt="Secretary"
+            loading="lazy"
+        >
+
+    </div>
+
+
+    <div class="member-info">
+
+        <h3>
+            പേര് ഇവിടെ
+        </h3>
+
+        <p>
+            SECRETARY
+        </p>
+
+    </div>
+
+</div>
+
 
 </div>
 
 </div>
+
 </section>
 
-<section class="programs" id="programs">
+
+
+<!-- =========================================
+     ACTIVITIES
+========================================= -->
+
+<section
+    class="programs"
+    id="programs"
+>
+
 <div class="container">
-<div class="section-head">
-    <small>OUR ACTIVITIES</small>
-    <h2>പ്രധാന പ്രവർത്തനങ്ങൾ</h2>
-    <p>സമൂഹത്തിനും വിദ്യാർത്ഥികൾക്കും പ്രയോജനകരമായ വിവിധ പ്രവർത്തനങ്ങൾ.</p>
+
+
+<div class="section-head center">
+
+    <small>
+        OUR ACTIVITIES
+    </small>
+
+    <h2>
+        പ്രധാന പ്രവർത്തനങ്ങൾ
+    </h2>
+
+    <p>
+        സമൂഹത്തിനും വിദ്യാർത്ഥികൾക്കും
+        പ്രയോജനകരമായ വിവിധ പ്രവർത്തനങ്ങൾ.
+    </p>
+
 </div>
+
+
 
 <div class="program-grid">
-<div class="program"><div class="program-icon">🎓</div><h3>വിദ്യാഭ്യാസം</h3><p>വിദ്യാർത്ഥികൾക്കായി വിദ്യാഭ്യാസ പരിപാടികളും പഠന സഹായങ്ങളും.</p></div>
-<div class="program"><div class="program-icon">🤝</div><h3>സാമൂഹിക സേവനം</h3><p>സമൂഹത്തിന് ആവശ്യമായ വിവിധ സേവന പ്രവർത്തനങ്ങൾ.</p></div>
-<div class="program"><div class="program-icon">🌙</div><h3>സാംസ്കാരിക പ്രവർത്തനങ്ങൾ</h3><p>മത-സാംസ്കാരിക പരിപാടികളും ബോധവൽക്കരണ പ്രവർത്തനങ്ങളും.</p></div>
-<div class="program"><div class="program-icon">👨‍🎓</div><h3>യുവജന പ്രവർത്തനം</h3><p>യുവജനങ്ങളുടെ കഴിവുകളും നേതൃത്വവും വളർത്തുന്നതിനുള്ള പ്രവർത്തനങ്ങൾ.</p></div>
-<div class="program"><div class="program-icon">📖</div><h3>പഠന കൂട്ടായ്മ</h3><p>പഠനവും അറിവും പ്രോത്സാഹിപ്പിക്കുന്ന കൂട്ടായ്മകൾ.</p></div>
-<div class="program"><div class="program-icon">❤️</div><h3>കാരുണ്യ പ്രവർത്തനം</h3><p>ആവശ്യക്കാർക്ക് സഹായമെത്തിക്കുന്ന സേവന പ്രവർത്തനങ്ങൾ.</p></div>
+
+
+<div class="program reveal">
+
+    <div class="program-icon">
+        🎓
+    </div>
+
+    <h3>
+        വിദ്യാഭ്യാസം
+    </h3>
+
+    <p>
+        വിദ്യാർത്ഥികൾക്കായി വിദ്യാഭ്യാസ
+        പരിപാടികളും പഠന സഹായങ്ങളും.
+    </p>
+
 </div>
+
+
+
+<div class="program reveal">
+
+    <div class="program-icon">
+        🤝
+    </div>
+
+    <h3>
+        സാമൂഹിക സേവനം
+    </h3>
+
+    <p>
+        സമൂഹത്തിന് ആവശ്യമായ വിവിധ
+        സേവന പ്രവർത്തനങ്ങൾ.
+    </p>
+
 </div>
+
+
+
+<div class="program reveal">
+
+    <div class="program-icon">
+        🌙
+    </div>
+
+    <h3>
+        സാംസ്കാരിക പ്രവർത്തനങ്ങൾ
+    </h3>
+
+    <p>
+        മത-സാംസ്കാരിക പരിപാടികളും
+        ബോധവൽക്കരണ പ്രവർത്തനങ്ങളും.
+    </p>
+
+</div>
+
+
+
+<div class="program reveal">
+
+    <div class="program-icon">
+        👨‍🎓
+    </div>
+
+    <h3>
+        യുവജന പ്രവർത്തനം
+    </h3>
+
+    <p>
+        യുവജനങ്ങളുടെ കഴിവുകളും
+        നേതൃത്വവും വളർത്തുന്നതിനുള്ള
+        പ്രവർത്തനങ്ങൾ.
+    </p>
+
+</div>
+
+
+
+<div class="program reveal">
+
+    <div class="program-icon">
+        📖
+    </div>
+
+    <h3>
+        പഠന കൂട്ടായ്മ
+    </h3>
+
+    <p>
+        പഠനവും അറിവും പ്രോത്സാഹിപ്പിക്കുന്ന
+        കൂട്ടായ്മകൾ.
+    </p>
+
+</div>
+
+
+
+<div class="program reveal">
+
+    <div class="program-icon">
+        ❤️
+    </div>
+
+    <h3>
+        കാരുണ്യ പ്രവർത്തനം
+    </h3>
+
+    <p>
+        ആവശ്യക്കാർക്ക് സഹായമെത്തിക്കുന്ന
+        സേവന പ്രവർത്തനങ്ങൾ.
+    </p>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
 
-<section id="gallery">
+
+
+<!-- =========================================
+     GALLERY
+========================================= -->
+
+<section
+    id="gallery"
+    class="gallery-section"
+>
+
 <div class="container">
-<div class="section-head">
-    <small>MEMORIES</small>
-    <h2>Photo Gallery</h2>
-    <p>നമ്മുടെ പ്രവർത്തനങ്ങളുടെ ഓർമ്മകൾ.</p>
+
+
+<div class="section-head center">
+
+    <small>
+        MEMORIES
+    </small>
+
+    <h2>
+        Photo Gallery
+    </h2>
+
+    <p>
+        നമ്മുടെ പ്രവർത്തനങ്ങളുടെ ഓർമ്മകൾ.
+    </p>
+
 </div>
+
+
 
 <div class="gallery-grid">
-<div class="gallery-item"><img src="gallery1.jpg" alt="Gallery 1"></div>
-<div class="gallery-item"><img src="gallery2.jpg" alt="Gallery 2"></div>
-<div class="gallery-item"><img src="gallery3.jpg" alt="Gallery 3"></div>
-<div class="gallery-item"><img src="gallery4.jpg" alt="Gallery 4"></div>
-<div class="gallery-item"><img src="gallery5.jpg" alt="Gallery 5"></div>
-<div class="gallery-item"><img src="gallery6.jpg" alt="Gallery 6"></div>
-<div class="gallery-item"><img src="gallery7.jpg" alt="Gallery 7"></div>
-<div class="gallery-item"><img src="gallery8.jpg" alt="Gallery 8"></div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery1.jpg"
+        alt="Gallery 1"
+        loading="lazy"
+    >
+
 </div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery2.jpg"
+        alt="Gallery 2"
+        loading="lazy"
+    >
+
 </div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery3.jpg"
+        alt="Gallery 3"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery4.jpg"
+        alt="Gallery 4"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery5.jpg"
+        alt="Gallery 5"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery6.jpg"
+        alt="Gallery 6"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery7.jpg"
+        alt="Gallery 7"
+        loading="lazy"
+    >
+
+</div>
+
+
+<div class="gallery-item reveal">
+
+    <img
+        src="gallery8.jpg"
+        alt="Gallery 8"
+        loading="lazy"
+    >
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
+
+
+<!-- =========================================
+     NEWS
+========================================= -->
 
 <section class="news">
+
 <div class="container">
-<div class="section-head">
-    <small>LATEST UPDATES</small>
-    <h2>News & Events</h2>
+
+
+<div class="section-head center">
+
+    <small>
+        LATEST UPDATES
+    </small>
+
+    <h2>
+        News & Events
+    </h2>
+
 </div>
+
+
 
 <div class="news-grid">
-<div class="news-card"><div class="news-date">2026</div><h3>യൂണിറ്റ് പ്രവർത്തനങ്ങൾ</h3><p>പുതിയ പരിപാടികളുടെയും പ്രവർത്തനങ്ങളുടെയും വിവരങ്ങൾ ഇവിടെ ചേർക്കാം.</p></div>
-<div class="news-card"><div class="news-date">2026</div><h3>വിദ്യാഭ്യാസ പരിപാടി</h3><p>വിദ്യാർത്ഥികൾക്കായി സംഘടിപ്പിക്കുന്ന വിദ്യാഭ്യാസ പരിപാടികളുടെ വിവരങ്ങൾ.</p></div>
-<div class="news-card"><div class="news-date">2026</div><h3>സാമൂഹിക സേവനം</h3><p>Unit-ന്റെ സാമൂഹിക സേവന പ്രവർത്തനങ്ങൾ ഇവിടെ പ്രസിദ്ധീകരിക്കാം.</p></div>
+
+
+<div class="news-card reveal">
+
+    <div class="news-date">
+        2026
+    </div>
+
+    <h3>
+        യൂണിറ്റ് പ്രവർത്തനങ്ങൾ
+    </h3>
+
+    <p>
+        പുതിയ പരിപാടികളുടെയും പ്രവർത്തനങ്ങളുടെയും
+        വിവരങ്ങൾ ഇവിടെ ചേർക്കാം.
+    </p>
+
 </div>
+
+
+
+<div class="news-card reveal">
+
+    <div class="news-date">
+        2026
+    </div>
+
+    <h3>
+        വിദ്യാഭ്യാസ പരിപാടി
+    </h3>
+
+    <p>
+        വിദ്യാർത്ഥികൾക്കായി സംഘടിപ്പിക്കുന്ന
+        വിദ്യാഭ്യാസ പരിപാടികളുടെ വിവരങ്ങൾ.
+    </p>
+
 </div>
+
+
+
+<div class="news-card reveal">
+
+    <div class="news-date">
+        2026
+    </div>
+
+    <h3>
+        സാമൂഹിക സേവനം
+    </h3>
+
+    <p>
+        Unit-ന്റെ സാമൂഹിക സേവന പ്രവർത്തനങ്ങൾ
+        ഇവിടെ പ്രസിദ്ധീകരിക്കാം.
+    </p>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
 
-<section id="contact">
+
+
+<!-- =========================================
+     CONTACT
+========================================= -->
+
+<section
+    id="contact"
+    class="contact-section"
+>
+
 <div class="container">
-<div class="section-head">
-    <small>CONTACT</small>
-    <h2>ബന്ധപ്പെടുക</h2>
-    <p>SKSSF Thalayad Unit-മായി ബന്ധപ്പെടാം.</p>
+
+
+<div class="section-head center">
+
+    <small>
+        CONTACT
+    </small>
+
+    <h2>
+        ബന്ധപ്പെടുക
+    </h2>
+
+    <p>
+        SKSSF Thalayad Unit-മായി ബന്ധപ്പെടാം.
+    </p>
+
 </div>
+
+
 
 <div class="contact-grid">
-<div class="contact-card">
+
+
+<div class="contact-card reveal">
+
+
 <div class="contact-row">
-    <div class="contact-icon">📍</div>
-    <div><h4>Location</h4><p>Thalayad, Kerala, India</p></div>
-</div>
-<div class="contact-row">
-    <div class="contact-icon">📞</div>
-    <div><h4>Phone</h4><p>+91 XXXXXXXXXX</p></div>
-</div>
-<div class="contact-row">
-    <div class="contact-icon">✉️</div>
-    <div><h4>Email</h4><p>skssfthalayad@gmail.com</p></div>
-</div>
+
+    <div class="contact-icon">
+        📍
+    </div>
+
+    <div>
+
+        <h4>
+            Location
+        </h4>
+
+        <p>
+            Thalayad, Kerala, India
+        </p>
+
+    </div>
+
 </div>
 
-<div class="contact-card">
-<h3 style="color:#8ee6b5;margin-bottom:10px;">Stay Connected</h3>
-<p style="color:#8997a2;font-size:13px;">പുതിയ അപ്ഡേറ്റുകൾക്കും പരിപാടികളുടെ വിവരങ്ങൾക്കും ഞങ്ങളുമായി ബന്ധപ്പെടുക.</p>
-<br>
-<a class="btn btn-green" href="https://wa.me/91XXXXXXXXXX" target="_blank">💬 WhatsApp</a>
+
+
+<div class="contact-row">
+
+    <div class="contact-icon">
+        📞
+    </div>
+
+    <div>
+
+        <h4>
+            Phone
+        </h4>
+
+        <p>
+            +91 XXXXXXXXXX
+        </p>
+
+    </div>
+
 </div>
+
+
+
+<div class="contact-row">
+
+    <div class="contact-icon">
+        ✉️
+    </div>
+
+    <div>
+
+        <h4>
+            Email
+        </h4>
+
+        <p>
+            skssfthalayad@gmail.com
+        </p>
+
+    </div>
+
 </div>
+
+
 </div>
+
+
+
+<div class="contact-card reveal">
+
+    <h3
+        style="
+        color:#fff;
+        margin-bottom:10px;
+        font-family:Montserrat,sans-serif;
+        "
+    >
+        Stay Connected
+    </h3>
+
+
+    <p
+        style="
+        color:#858590;
+        font-size:12px;
+        line-height:1.8;
+        "
+    >
+        പുതിയ അപ്ഡേറ്റുകൾക്കും പരിപാടികളുടെ
+        വിവരങ്ങൾക്കും ഞങ്ങളുമായി ബന്ധപ്പെടുക.
+    </p>
+
+
+    <br>
+
+
+    <!-- CHANGE XXXXXXXXXX TO YOUR WHATSAPP NUMBER -->
+
+    <a
+        class="btn btn-pink"
+        href="https://wa.me/91XXXXXXXXXX"
+        target="_blank"
+        rel="noopener"
+    >
+        💬 WhatsApp
+    </a>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
 
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
 <footer>
+
 <div class="container">
+
+
 <div class="footer-grid">
+
+
 <div>
-    <h3>SKSSF THALAYAD UNIT</h3>
-    <p>വിദ്യാഭ്യാസം • സംസ്കാരം • സേവനം • യുവജന ശാക്തീകരണം</p>
+
+    <h3>
+        SKSSF THALAYAD UNIT
+    </h3>
+
+    <p>
+        വിദ്യാഭ്യാസം • സംസ്കാരം • സേവനം •
+        യുവജന ശാക്തീകരണം
+    </p>
+
 </div>
+
+
+
 <div>
-    <h3>Quick Links</h3>
+
+    <h3>
+        Quick Links
+    </h3>
+
     <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#committee">Committee</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+
+        <li>
+            <a href="#home">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="#committee">
+                Committee
+            </a>
+        </li>
+
+        <li>
+            <a href="#gallery">
+                Gallery
+            </a>
+        </li>
+
     </ul>
+
 </div>
+
+
+
 <div>
-    <h3>Connect</h3>
+
+    <h3>
+        Connect
+    </h3>
+
     <ul>
-        <li>📍 Thalayad</li>
-        <li>💬 WhatsApp</li>
-        <li>📞 Contact</li>
+
+        <li>
+            📍 Thalayad
+        </li>
+
+        <li>
+            💬 WhatsApp
+        </li>
+
+        <li>
+            📞 Contact
+        </li>
+
     </ul>
+
 </div>
+
+
 </div>
-<div class="copyright">© <span id="year"></span> SKSSF Thalayad Unit. All Rights Reserved.</div>
+
+
+
+<div class="copyright">
+
+    © <span id="year"></span>
+    SKSSF Thalayad Unit.
+    All Rights Reserved.
+
 </div>
+
+
+</div>
+
 </footer>
 
-<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="whatsapp" aria-label="WhatsApp">💬</a>
-<button id="topBtn">↑</button>
+
+
+<!-- =========================================
+     WHATSAPP FLOATING BUTTON
+========================================= -->
+
+<a
+    href="https://wa.me/91XXXXXXXXXX"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp"
+    aria-label="WhatsApp"
+>
+    💬
+</a>
+
+
+
+<!-- =========================================
+     BACK TO TOP
+========================================= -->
+
+<button
+    id="topBtn"
+    aria-label="Back to top"
+>
+    ↑
+</button>
+
+
 
 <script>
-const menuBtn=document.getElementById("menuBtn");
-const nav=document.getElementById("nav");
 
-menuBtn.addEventListener("click",()=>nav.classList.toggle("show"));
+/* =========================================
+   MOBILE MENU
+========================================= */
 
-document.querySelectorAll("#nav a").forEach(link=>{
-    link.addEventListener("click",()=>nav.classList.remove("show"));
+const menuBtn =
+document.getElementById("menuBtn");
+
+const nav =
+document.getElementById("nav");
+
+
+menuBtn.addEventListener("click", function(){
+
+    nav.classList.toggle("show");
+
+    const opened =
+        nav.classList.contains("show");
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        opened
+    );
+
 });
 
-document.getElementById("year").textContent=new Date().getFullYear();
 
-const topBtn=document.getElementById("topBtn");
+/* =========================================
+   CLOSE MOBILE MENU
+========================================= */
 
-window.addEventListener("scroll",()=>{
-    topBtn.style.display=window.scrollY>450?"block":"none";
-});
+document.querySelectorAll("#nav a")
+.forEach(function(link){
 
-topBtn.addEventListener("click",()=>{
-    window.scrollTo({top:0,behavior:"smooth"});
-});
+    link.addEventListener("click",function(){
 
-document.querySelectorAll(".gallery-item img").forEach(img=>{
-    img.addEventListener("click",function(){
-        const overlay=document.createElement("div");
-        overlay.style.cssText=`
-            position:fixed;inset:0;background:rgba(0,0,0,.94);
-            z-index:5000;display:flex;align-items:center;
-            justify-content:center;padding:20px;cursor:pointer;
-        `;
-        const full=document.createElement("img");
-        full.src=this.src;
-        full.style.cssText=`
-            max-width:95%;max-height:90vh;width:auto;
-            border-radius:12px;
-        `;
-        overlay.appendChild(full);
-        overlay.addEventListener("click",()=>overlay.remove());
-        document.body.appendChild(overlay);
+        nav.classList.remove("show");
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
     });
+
 });
 
-const revealElements=document.querySelectorAll(
-    ".member,.program,.news-card,.gallery-item,.contact-card"
+
+/* =========================================
+   CURRENT YEAR
+========================================= */
+
+document.getElementById("year")
+.textContent =
+new Date().getFullYear();
+
+
+/* =========================================
+   BACK TO TOP
+========================================= */
+
+const topBtn =
+document.getElementById("topBtn");
+
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY > 450){
+
+        topBtn.style.display = "block";
+
+    }else{
+
+        topBtn.style.display = "none";
+
+    }
+
+});
+
+
+topBtn.addEventListener("click",function(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+});
+
+
+/* =========================================
+   GALLERY LIGHTBOX
+========================================= */
+
+document
+.querySelectorAll(".gallery-item img")
+.forEach(function(img){
+
+    img.addEventListener("click",function(){
+
+        const overlay =
+        document.createElement("div");
+
+        overlay.className =
+        "lightbox";
+
+
+        const full =
+        document.createElement("img");
+
+        full.src =
+        this.src;
+
+        full.alt =
+        this.alt;
+
+
+        overlay.appendChild(full);
+
+        document.body.appendChild(overlay);
+
+
+        overlay.addEventListener(
+            "click",
+            function(){
+                overlay.remove();
+            }
+        );
+
+    });
+
+});
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+
+const observer =
+new IntersectionObserver(
+
+    function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add(
+                    "active"
+                );
+
+                observer.unobserve(
+                    entry.target
+                );
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.12
+    }
+
 );
 
-const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.style.opacity="1";
-            entry.target.style.transform="translateY(0)";
-        }
-    });
-},{threshold:.12});
 
-revealElements.forEach(el=>{
-    el.style.opacity="0";
-    el.style.transform="translateY(25px)";
-    el.style.transition="all .7s ease";
+revealElements.forEach(function(el){
+
     observer.observe(el);
+
 });
+
+
+/* =========================================
+   ESC KEY CLOSE LIGHTBOX
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            const lightbox =
+            document.querySelector(".lightbox");
+
+            if(lightbox){
+
+                lightbox.remove();
+
+            }
+
+        }
+
+    }
+);
+
 </script>
 
 </body>
